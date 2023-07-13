@@ -12,6 +12,17 @@ import org.slf4j.LoggerFactory;
 import util.HttpRequestUtils;
 import util.IOUtils;
 
+
+/**
+ *
+ * HttpRequest
+ *
+ * @author : jihoon
+ * @date : 2023/07/13
+ * @version 1.0.0
+ * @description : InputStream을 인자로 받아 데이터를 필요한 형태로 분리 후 객체의 필드에 저장하는 역할
+ *
+**/
 public class HttpRequest {
     private static final Logger log = LoggerFactory.getLogger(HttpRequest.class);
 
@@ -20,6 +31,7 @@ public class HttpRequest {
     private Map<String, String> headers = new HashMap<String, String>();
     private Map<String, String> params = new HashMap<String, String>();
     private RequestLine requestLine;
+
 
     public HttpRequest(InputStream in){
         try{
