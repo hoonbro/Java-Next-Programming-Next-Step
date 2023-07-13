@@ -12,6 +12,16 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ *
+ * HttpResponse
+ *
+ * @author : jihoon
+ * @date : 2023/07/13
+ * @version 1.0.0
+ * @description : 응답 데이터의 상태에 따라 적절한 HTTP 헤더를 지정
+ *
+**/
 public class HttpResponse {
     private static final Logger log = LoggerFactory.getLogger(HttpResponse.class);
 
