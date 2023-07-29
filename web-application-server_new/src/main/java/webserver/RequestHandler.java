@@ -12,6 +12,7 @@ import java.nio.file.Files;
 import java.util.Collection;
 import java.util.Map;
 
+import Controller.Controller;
 import http.HttpRequest;
 import http.HttpResponse;
 import model.User;
@@ -41,14 +42,12 @@ public class RequestHandler extends Thread {
             HttpResponse response = new HttpResponse(out);
             String path = getDefaultPath(request.getPath());
 
-            if ("/user/create".equals(path)) {
-                createUser(request, response);
-            } else if ("/user/login".equals(path)) {
-                login(request,response);
-            } else if ("/user/list".equals(path)) {
-                userList(request, response);
-            } else {
-                response.forward(path);
+            Controller controller = RequestMapping.getController(request.getPath());
+
+            if(controller == null){
+                response.forward(getDefaultPath(request.getPath()));
+            }else{
+                controller.service(request, response);
             }
         } catch (IOException e) {
             log.error(e.getMessage());
