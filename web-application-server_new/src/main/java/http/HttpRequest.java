@@ -100,4 +100,14 @@ public class HttpRequest {
     public String getParameter(String name) {
         return params.get(name);
     }
+
+    public boolean isLogin(String line){
+        String[] headerTokens = line.split(":");
+        Map<String, String> cookies = HttpRequestUtils.parseCookies(headerTokens[1].trim());
+        String value = cookies.get("logined");
+        if (value == null) {
+            return false;
+        }
+        return Boolean.parseBoolean(value);
+    }
 }
